@@ -1,0 +1,10 @@
+.ForecastCard .day-text,
+.temp-range {
+  font-size: 18px;
+  color: #b8dff0;
+}
+
+.ForecastCard .forecast-img {
+  width: 100px;
+  height: 100px;
+}
