@@ -10,7 +10,7 @@ export default function WeatherInformation() {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let currentTime = new Date();
   let day = days[currentTime.getDay()]; // returns a value between 0 and 6.
@@ -26,7 +26,7 @@ export default function WeatherInformation() {
     lastUpdated: `${day}, ${hours}:${minutes}`,
     imgSrc: "https://angela-weather-app.netlify.app/img/04n.png",
     currTemp: -13,
-    description: "Overcast clouds"
+    description: "Overcast clouds",
   };
   return (
     <div className="WeatherInformation">
@@ -72,11 +72,11 @@ export default function WeatherInformation() {
                 </div>
                 <div className="col align-self-center">
                   <span className="temp-units">
-                    <a href="#" id="celsius-link" className="active">
+                    <a href="/" id="celsius-link" className="active">
                       °C
                     </a>{" "}
                     /
-                    <a href="#" id="fahrenheit-link">
+                    <a href="/" id="fahrenheit-link">
                       °F
                     </a>
                   </span>
