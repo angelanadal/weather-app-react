@@ -24,6 +24,32 @@ export default function App() {
           <hr />
           <Forecast />
         </div>
+        <div className="row">
+          <div className="col centered">
+            <a
+              href="https://github.com/nightingaele/weather-app-react"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Open-sourced on GitHub
+            </a>
+            <span className="footer-text"> by </span>
+            <a
+              href="https://www.linkedin.com/in/angela-nadal/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Angela Nadal
+            </a>
+            <span className="footer-text"> and hosted on </span>
+            <a href="https://www.netlify.com/" rel="noreferrer" target="_blank">
+              Netlify
+            </a>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col centered">Icons drawn by me :)</div>
+        </div>
       </div>
     </div>
   );
