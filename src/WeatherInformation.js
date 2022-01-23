@@ -1,8 +1,15 @@
 import React from "react";
 import LocationInfo from "./LocationInfo";
+import TempConversion from "./TempConversion";
+import { convertToFahrenheit } from "./constants";
 import "./WeatherInformation.css";
 
-export default function WeatherInformation({ weatherInfo, locationInfo }) {
+export default function WeatherInformation({
+  weatherInfo,
+  locationInfo,
+  useFahrenheit,
+  setUseFahrenheit,
+}) {
   if (weatherInfo) {
     return (
       <div className="WeatherInformation">
@@ -30,7 +37,11 @@ export default function WeatherInformation({ weatherInfo, locationInfo }) {
             <div id="feels-like">
               Feels like:{" "}
               <span id="current-wind-chill">
-                {Math.round(weatherInfo.feelsLike)}°C
+                {useFahrenheit
+                  ? `${Math.round(
+                      convertToFahrenheit(weatherInfo.feelsLike)
+                    )}°F`
+                  : `${Math.round(weatherInfo.feelsLike)}°C`}
               </span>
             </div>
             <br />
@@ -54,19 +65,16 @@ export default function WeatherInformation({ weatherInfo, locationInfo }) {
                 <div className="row no-gutters">
                   <div className="col no-padding centered">
                     <span id="current-temp">
-                      {Math.round(weatherInfo.currTemp)}
+                      {useFahrenheit
+                        ? Math.round(convertToFahrenheit(weatherInfo.currTemp))
+                        : Math.round(weatherInfo.currTemp)}
                     </span>
                   </div>
                   <div className="col align-self-center">
-                    <span className="temp-units">
-                      <a href="/" id="celsius-link" className="active">
-                        °C
-                      </a>{" "}
-                      /
-                      <a href="/" id="fahrenheit-link">
-                        °F
-                      </a>
-                    </span>
+                    <TempConversion
+                      useFahrenheit={useFahrenheit}
+                      setUseFahrenheit={setUseFahrenheit}
+                    />
                   </div>
                 </div>
               </div>

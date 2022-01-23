@@ -1,0 +1,9 @@
+.TempConversion {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.TempConversion .active {
+  color: rgb(93, 250, 255);
+  cursor: pointer;
+}

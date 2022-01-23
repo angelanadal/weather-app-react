@@ -19,16 +19,6 @@
   font-size: 80px;
 }
 
-.WeatherInformation .temp-units {
-  font-size: 27px;
-}
-
-.WeatherInformation .temp-units .active {
-  color: #fff;
-  font-weight: bold;
-  cursor: text;
-}
-
 .WeatherInformation #description {
   font-size: 24px;
 }

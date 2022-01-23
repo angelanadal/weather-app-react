@@ -8,6 +8,7 @@ import WeatherInformation from "./WeatherInformation";
 export default function App() {
   let [currentWeather, setCurrentWeather] = useState(null);
   let [currentLocation, setCurrentLocation] = useState(null);
+  let [useFahrenheit, setUseFahrenheit] = useState(null);
 
   function updateData(weatherInfo, locationInfo) {
     let days = [
@@ -52,6 +53,8 @@ export default function App() {
           <WeatherInformation
             weatherInfo={currentWeather}
             locationInfo={currentLocation}
+            useFahrenheit={useFahrenheit}
+            setUseFahrenheit={setUseFahrenheit}
           />
           {/*
           <hr />
