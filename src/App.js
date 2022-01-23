@@ -64,7 +64,7 @@ export default function App() {
         <div className="row">
           <div className="col centered">
             <a
-              href="https://github.com/nightingaele/weather-app-react"
+              href="https://github.com/angelanadal/weather-app-react"
               rel="noreferrer"
               target="_blank"
             >
