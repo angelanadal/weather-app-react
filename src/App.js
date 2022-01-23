@@ -3,7 +3,7 @@ import "./colors.css";
 import CurrentLocationButton from "./CurrentLocationButton";
 import Search from "./Search";
 import WeatherInformation from "./WeatherInformation";
-import Forecast from "./Forecast";
+// import Forecast from "./Forecast";
 
 export default function App() {
   return (
@@ -21,8 +21,10 @@ export default function App() {
             </div>
           </div>
           <WeatherInformation />
+          {/*
           <hr />
           <Forecast />
+          */}
         </div>
         <div className="row">
           <div className="col centered">
