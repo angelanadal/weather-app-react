@@ -6,8 +6,8 @@ export default function CurrentLocationButton() {
     <div className="CurrentLocationButton">
       <button className="btn btn-primary centered" id="current-loc">
         <div className="row align-items-center">
-          <div className="col-2">
-            <i className="fas fa-search-location fa-2x" />
+          <div className="col-1 col-sm-12 col-md-1">
+            <i className="fas fa-search-location fa-1x" />
           </div>
           <div className="col">
             <span>Current Location</span>

@@ -1,12 +1,13 @@
 import React from "react";
 import "./Search.css";
+import CurrentLocationButton from "./CurrentLocationButton";
 
 export default function Search() {
   return (
     <div className="Search">
       <form className="search-bar" id="search-bar">
         <div className="row align-items-center">
-          <div className="col-9 lg-10">
+          <div className="col-6 md-8">
             <input
               type="text"
               className="text-input"
@@ -22,6 +23,9 @@ export default function Search() {
               label="Search"
               value="Search"
             />
+          </div>
+          <div className="col">
+            <CurrentLocationButton />
           </div>
         </div>
       </form>
