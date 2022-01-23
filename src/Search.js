@@ -27,6 +27,8 @@ export default function Search({ updateFunction }) {
     });
   }
 
+  searchCity("Winnipeg");
+
   function handleSearch(event) {
     event.preventDefault();
     let input = document.querySelector("#city-input");

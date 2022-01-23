@@ -83,6 +83,16 @@ export default function WeatherInformation({ weatherInfo, locationInfo }) {
       </div>
     );
   } else {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="WeatherInformation">
+        <div className="row top-level-row">
+          <div className="col">
+            <div className="align-self-center">
+              <h1>Loading...</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
