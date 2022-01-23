@@ -1,2 +1,2 @@
-export const apiKey = "a8730d7b28118354d14e2046c817ba28";
+export const apiKey = "ce127c4a4bf4aa798458ca629a00045c";
 export const units = "metric";

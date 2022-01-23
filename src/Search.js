@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Search.css";
 import CurrentLocationButton from "./CurrentLocationButton";
 import { apiKey, units } from "./constants";
@@ -26,8 +26,8 @@ export default function Search({ updateFunction }) {
         .then((response) => handleWeatherResponse(response, locationData));
     });
   }
-
-  searchCity("Winnipeg");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => searchCity("Winnipeg"), []);
 
   function handleSearch(event) {
     event.preventDefault();
