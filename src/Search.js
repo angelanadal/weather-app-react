@@ -4,10 +4,9 @@ import CurrentLocationButton from "./CurrentLocationButton";
 import { apiKey, units } from "./constants";
 import axios from "axios";
 
-export default function Search() {
+export default function Search({ updateFunction }) {
   function handleWeatherResponse(response, locationData) {
-    console.log(response);
-    console.log(locationData);
+    updateFunction(response.data, locationData);
   }
 
   function searchCity(city) {

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import "./colors.css";
 import Search from "./Search";
@@ -5,6 +6,38 @@ import WeatherInformation from "./WeatherInformation";
 // import Forecast from "./Forecast";
 
 export default function App() {
+  let [currentWeather, setCurrentWeather] = useState(null);
+  let [currentLocation, setCurrentLocation] = useState(null);
+
+  function updateData(weatherInfo, locationInfo) {
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let currentTime = new Date();
+    let day = days[currentTime.getDay()]; // returns a value between 0 and 6.
+
+    let hours = currentTime.getHours();
+    let minutes = String(currentTime.getMinutes()).padStart(2, "0");
+
+    setCurrentWeather({
+      humidity: weatherInfo.current.humidity,
+      windSpeed: Math.round(weatherInfo.current.wind_speed * 3.6),
+      feelsLike: weatherInfo.current.feels_like,
+      lastUpdated: `${day}, ${hours}:${minutes}`,
+      imgSrc: "https://angela-weather-app.netlify.app/img/04n.png",
+      currTemp: weatherInfo.current.temp,
+      description: weatherInfo.current.weather[0].main,
+    });
+
+    setCurrentLocation(locationInfo);
+  }
+
   return (
     <div className="App">
       <div className="container">
@@ -12,11 +45,14 @@ export default function App() {
           <div className="row top-level-row">
             <div className="row top-level-row align-items-center">
               <div className="col">
-                <Search />
+                <Search updateFunction={updateData} />
               </div>
             </div>
           </div>
-          <WeatherInformation />
+          <WeatherInformation
+            weatherInfo={currentWeather}
+            locationInfo={currentLocation}
+          />
           {/*
           <hr />
           <Forecast />
