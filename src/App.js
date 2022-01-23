@@ -30,7 +30,7 @@ export default function App() {
       windSpeed: Math.round(weatherInfo.current.wind_speed * 3.6),
       feelsLike: weatherInfo.current.feels_like,
       lastUpdated: `${day}, ${hours}:${minutes}`,
-      imgSrc: "https://angela-weather-app.netlify.app/img/04n.png",
+      imgSrc: `img/${weatherInfo.current.weather[0].icon}.png`,
       currTemp: weatherInfo.current.temp,
       description: weatherInfo.current.weather[0].main,
     });
