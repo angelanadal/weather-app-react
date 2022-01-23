@@ -1,11 +1,42 @@
 import React from "react";
 import "./Search.css";
 import CurrentLocationButton from "./CurrentLocationButton";
+import { apiKey, units } from "./constants";
+import axios from "axios";
 
 export default function Search() {
+  function handleWeatherResponse(response, locationData) {
+    console.log(response);
+    console.log(locationData);
+  }
+
+  function searchCity(city) {
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}`;
+    let lat;
+    let lon;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then((response) => {
+      lat = response.data.coord.lat;
+      lon = response.data.coord.lon;
+      let locationData = {
+        country: response.data.sys.country,
+        name: response.data.name,
+      };
+      apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}`;
+      axios
+        .get(`${apiUrl}&appid=${apiKey}`)
+        .then((response) => handleWeatherResponse(response, locationData));
+    });
+  }
+
+  function handleSearch(event) {
+    event.preventDefault();
+    let input = document.querySelector("#city-input");
+    searchCity(input.value);
+  }
+
   return (
     <div className="Search">
-      <form className="search-bar" id="search-bar">
+      <form className="search-bar" id="search-bar" onSubmit={handleSearch}>
         <div className="row align-items-center">
           <div className="col-6 md-8">
             <input
@@ -25,7 +56,9 @@ export default function Search() {
             />
           </div>
           <div className="col">
-            <CurrentLocationButton />
+            <CurrentLocationButton
+              handleWeatherResponse={handleWeatherResponse}
+            />
           </div>
         </div>
       </form>
