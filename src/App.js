@@ -3,12 +3,13 @@ import "./App.css";
 import "./colors.css";
 import Search from "./Search";
 import WeatherInformation from "./WeatherInformation";
-// import Forecast from "./Forecast";
+import Forecast from "./Forecast";
 
 export default function App() {
   let [currentWeather, setCurrentWeather] = useState(null);
   let [currentLocation, setCurrentLocation] = useState(null);
   let [useFahrenheit, setUseFahrenheit] = useState(null);
+  let [forecastData, setForecastData] = useState(null);
 
   function updateData(weatherInfo, locationInfo) {
     let days = [
@@ -56,10 +57,14 @@ export default function App() {
             useFahrenheit={useFahrenheit}
             setUseFahrenheit={setUseFahrenheit}
           />
-          {/*
-          <hr />
-          <Forecast />
-          */}
+          {forecastData ? (
+            <div>
+              <hr />
+              <Forecast />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="row">
           <div className="col centered">
