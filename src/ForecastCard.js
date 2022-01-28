@@ -1,7 +1,14 @@
 import React from "react";
 import "./ForecastCard.css";
+import { convertToFahrenheit } from "./constants";
 
-export default function ForecastCard({ day, img, condition, tempRange }) {
+export default function ForecastCard({
+  day,
+  img,
+  condition,
+  tempRange,
+  useFahrenheit,
+}) {
   return (
     <div className="ForecastCard">
       <div className="row align-items-center">
@@ -25,8 +32,17 @@ export default function ForecastCard({ day, img, condition, tempRange }) {
       <div className="row">
         <div className="col">
           <span className="temp-range">
-            <strong>{Math.round(tempRange.max)}°</strong> |{" "}
-            {Math.round(tempRange.min)}°
+            <strong>
+              {useFahrenheit
+                ? Math.round(convertToFahrenheit(tempRange.max))
+                : Math.round(tempRange.max)}
+              °
+            </strong>{" "}
+            |{" "}
+            {useFahrenheit
+              ? Math.round(convertToFahrenheit(tempRange.min))
+              : Math.round(tempRange.min)}
+            °
           </span>
         </div>
       </div>

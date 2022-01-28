@@ -1,7 +1,7 @@
 import React from "react";
 import ForecastCard from "./ForecastCard";
 
-export default function Forecast({ forecastData }) {
+export default function Forecast({ forecastData, useFahrenheit }) {
   return (
     <div className="Forecast">
       <div className="row top-level-row" id="forecast">
@@ -13,6 +13,7 @@ export default function Forecast({ forecastData }) {
                 img={dailyWeather.imgSrc}
                 condition={dailyWeather.condition}
                 tempRange={dailyWeather.tempRange}
+                useFahrenheit={useFahrenheit}
               />
             </div>
           );

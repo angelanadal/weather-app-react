@@ -77,7 +77,10 @@ export default function App() {
           {forecastData ? (
             <div>
               <hr />
-              <Forecast forecastData={forecastData} />
+              <Forecast
+                forecastData={forecastData}
+                useFahrenheit={useFahrenheit}
+              />
             </div>
           ) : (
             ""
