@@ -41,7 +41,7 @@ export default function App() {
 
     let newForecastData = [];
 
-    weatherInfo.daily.forEach((dailyWeather) => {
+    weatherInfo.daily.slice(0, 5).forEach((dailyWeather) => {
       let day = new Date(dailyWeather.dt * 1000);
       day = days[day.getDay()].slice(0, 3);
       let imgSrc = `img/${dailyWeather.weather[0].icon}.png`;
@@ -77,7 +77,7 @@ export default function App() {
           {forecastData ? (
             <div>
               <hr />
-              <Forecast />
+              <Forecast forecastData={forecastData} />
             </div>
           ) : (
             ""
