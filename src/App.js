@@ -38,6 +38,23 @@ export default function App() {
     });
 
     setCurrentLocation(locationInfo);
+
+    let newForecastData = [];
+
+    weatherInfo.daily.forEach((dailyWeather) => {
+      let day = new Date(dailyWeather.dt * 1000);
+      day = days[day.getDay()].slice(0, 3);
+      let imgSrc = `img/${dailyWeather.weather[0].icon}.png`;
+      let condition = dailyWeather.weather[0].main;
+      let tempRange = dailyWeather.temp;
+      newForecastData.push({
+        day,
+        imgSrc,
+        condition,
+        tempRange,
+      });
+    });
+    setForecastData(newForecastData);
   }
 
   return (
