@@ -18,7 +18,7 @@ export default function WeatherInformation({
             {locationInfo ? (
               <LocationInfo
                 name={locationInfo.name}
-                country-code={locationInfo.country}
+                countryCode={locationInfo.country}
               />
             ) : (
               <h3>Loading...</h3>

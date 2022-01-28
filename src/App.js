@@ -34,7 +34,7 @@ export default function App() {
       lastUpdated: `${day}, ${hours}:${minutes}`,
       imgSrc: `img/${weatherInfo.current.weather[0].icon}.png`,
       currTemp: weatherInfo.current.temp,
-      description: weatherInfo.current.weather[0].main,
+      description: weatherInfo.current.weather[0].description,
     });
 
     setCurrentLocation(locationInfo);
@@ -52,6 +52,7 @@ export default function App() {
         imgSrc,
         condition,
         tempRange,
+        key: day,
       });
     });
     setForecastData(newForecastData);
