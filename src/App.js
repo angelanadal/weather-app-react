@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { weatherCodeMap } from "./constants";
 import "./App.css";
 import "./colors.css";
 import Search from "./Search";
@@ -11,7 +12,7 @@ export default function App() {
   let [useFahrenheit, setUseFahrenheit] = useState(null);
   let [forecastData, setForecastData] = useState(null);
 
-  function updateData(weatherInfo, locationInfo) {
+  function updateData(weatherData, locationInfo) {
     let days = [
       "Sunday",
       "Monday",
@@ -23,30 +24,32 @@ export default function App() {
     ];
     let currentTime = new Date();
     let day = days[currentTime.getDay()]; // returns a value between 0 and 6.
-
     let hours = currentTime.getHours();
     let minutes = String(currentTime.getMinutes()).padStart(2, "0");
 
     setCurrentWeather({
-      humidity: weatherInfo.current.humidity,
-      windSpeed: Math.round(weatherInfo.current.wind_speed * 3.6),
-      feelsLike: weatherInfo.current.feels_like,
+      humidity: weatherData.current.relativeHumidity2m,
+      windSpeed: weatherData.current.windSpeed10m,
+      feelsLike: weatherData.current.apparentTemperature,
       lastUpdated: `${day}, ${hours}:${minutes}`,
-      imgSrc: `img/${weatherInfo.current.weather[0].icon}.png`,
-      currTemp: weatherInfo.current.temp,
-      description: weatherInfo.current.weather[0].description,
+      imgSrc: `img/${weatherData.current.weatherCode}${weatherData.current.isDay ? 'd' : 'n'}.png`,
+      currTemp: weatherData.current.temperature2m,
+      description: weatherCodeMap[weatherData.current.weatherCode],
     });
 
     setCurrentLocation(locationInfo);
 
     let newForecastData = [];
 
-    weatherInfo.daily.slice(0, 5).forEach((dailyWeather) => {
-      let day = new Date(dailyWeather.dt * 1000);
+    for (let i = 0; i < 5; i++) {
+      let day = weatherData.daily.time[i];
       day = days[day.getDay()].slice(0, 3);
-      let imgSrc = `img/${dailyWeather.weather[0].icon}.png`;
-      let condition = dailyWeather.weather[0].main;
-      let tempRange = dailyWeather.temp;
+      let imgSrc = `img/${weatherData.daily.weatherCode[i]}d.png`;
+      let condition = weatherData.daily.weatherCode[i];
+      let tempRange = {
+        max: weatherData.daily.temperature2mMax[i],
+        min: weatherData.daily.temperature2mMin[i]
+      };
       newForecastData.push({
         day,
         imgSrc,
@@ -54,7 +57,7 @@ export default function App() {
         tempRange,
         key: day,
       });
-    });
+    }
     setForecastData(newForecastData);
   }
 
