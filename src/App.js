@@ -99,14 +99,7 @@ export default function App() {
             >
               Open-sourced on GitHub
             </a>
-            <span className="footer-text"> by </span>
-            <a
-              href="https://www.linkedin.com/in/angela-nadal/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Angela Nadal
-            </a>
+            <span className="footer-text"> by Angela Smallwood </span>
             <span className="footer-text"> and hosted on </span>
             <a href="https://www.netlify.com/" rel="noreferrer" target="_blank">
               Netlify
